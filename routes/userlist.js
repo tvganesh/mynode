@@ -17,12 +17,28 @@ exports.list =  function(req, res) {
 	  console.log("reached");
 	    var collection = db.collection('usercollection');
 	    console.log("reached1");
-	    collection.find({},{},function(e,docs){
-	    	console.log(docs);
+	    
+
+	    //collection.find({},{},function(e,docs){
+	    collection.find().toArray(function(err, items) {
+	    	console.log(items);
 	        res.render('userlist', {
-	            "userlist" : docs
+	            "userlist" : items
 	        });
 	    });
+	    
+	   /* collection.find().toArray(function(err, items) {
+            res.send(items);
+        });*/
+	    /*var stream = collection.find().stream();
+	    console.log("Printing values...");
+	    stream.on("data", function(item) {
+	    console.log(item);
+	    });
+
+	    stream.on("end", function() {});*/
+
+	    
 	});
 	 
 }; 

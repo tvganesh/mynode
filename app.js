@@ -9,6 +9,11 @@ var express = require('express')
   , posts = require('./routes/posts')
   , userlist = require('./routes/userlist')
   , newuser = require('./routes/newuser')
+  , adduser = require('./routes/adduser')
+  , changeuser = require('./routes/changeuser')
+  , updateuser = require('./routes/updateuser')
+  , remuser = require('./routes/remuser')
+  , deleteuser = require('./routes/deleteuser')
   , http = require('http')
   , path = require('path');
 
@@ -57,6 +62,11 @@ app.get('/helloworld', routes.index);
 app.get('/posts', posts.list);
 app.get('/userlist', userlist.list);
 app.get('/newuser', newuser.list);
+app.post('/adduser',adduser.list);
+app.get('/changeuser', changeuser.list);
+app.post('/updateuser', updateuser.list);
+app.get('/remuser', remuser.list);
+app.post('/deleteuser',deleteuser.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
